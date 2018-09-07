@@ -7,6 +7,4 @@ deploy:
   file: "/home/travis/build/datacrow/core/datacrow-core.jar"
   on:
       repo: datacrow/core
-      branches:
-          only:
-              - master
+      tags: true
