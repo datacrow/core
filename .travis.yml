@@ -1,3 +1,10 @@
 language: java
 script:
         ant
+deploy:
+  provider: releases
+  api_key: "f1189bac5d3d82a5e0f95e7068c84ea6bfa28de5"
+  file: "/home/travis/build/datacrow/core/datacrow-core.jar"
+  skip_cleanup: true
+  on:
+    tags: true
