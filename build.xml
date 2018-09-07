@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" name="data crow">
+
+    <target depends="build-datacrow" name="build"/>
+
+    <path id="datacrow.class.path">
+        <fileset dir="lib/">
+        	<include name="commons/*.jar"/>
+            <include name="html/*.jar"/>
+            <include name="jacksum/*.jar"/>
+            <include name="jaudiotagger/*.jar"/>
+            <include name="jebml/*.jar"/>
+        	<include name="log4j/*.jar"/>
+            <include name="metadata/*.jar"/>
+            <include name="pdf/*.jar"/>
+            <include name="xml/*.jar"/>
+        	<include name="xml-rpc/*.jar"/>
+            <include name="jasper/*.jar"/>
+            <include name="zip/*.jar"/>
+        </fileset> 
+    </path>
+    
+    <target name="build-datacrow">
+    
+        <mkdir dir="_classes/" />
+        <javac srcdir="_source/" destdir="_classes/" debug="true">
+            <classpath refid="datacrow.class.path"/>
+        </javac>
+        
+        <copy todir="_classes/">
+            <fileset dir="_source/">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+
+        <jar basedir="_classes" jarfile="datacrow-core.jar"  />
+
+    </target>
+</project>
